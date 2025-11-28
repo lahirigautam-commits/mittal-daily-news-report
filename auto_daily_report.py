@@ -801,7 +801,10 @@ def send_report_to_telegram(file_path):
         files = {"document": f}
         data = {
             "chat_id": CHAT_ID,
-            "caption": "Daily news report",
+            "caption": (
+                "Good Morning, Kabuze, today's Mittal News Report file "
+                "is ready for your review."
+            ),
         }
         resp = requests.post(url, data=data, files=files)
     print("[INFO] Telegram response:", resp.status_code, resp.text)
