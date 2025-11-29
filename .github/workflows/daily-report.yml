@@ -2,8 +2,8 @@ name: Daily News Report
 
 on:
   schedule:
-    # 01:30 UTC = 07:00 IST
-    - cron: "30 1 * * *"
+    # 01:00 UTC = 06:30 IST
+    - cron: "0 1 * * *"
   workflow_dispatch:  # allow manual trigger
 
 jobs:
