@@ -307,6 +307,24 @@ DEFAULT_IMAGE_NAMES = {
     "image_4": "image_4",
 }
 
+def should_run_now_ist():
+    """
+    Decide whether to actually run the heavy job now.
+    We only want to do real work once per day around 06:00 IST.
+    GitHub cron may be delayed, so we check current IST time
+    and skip all other hours.
+    """
+    now_utc = datetime.utcnow()
+    ist = now_utc + timedelta(hours=5, minutes=30)
+    print("[INFO] Current IST time:", ist.strftime("%Y-%m-%d %H:%M"))
+
+    # Only run when IST hour is 6 (06:00–06:59)
+    if ist.hour == 6:
+        print("[INFO] Within 06:00–06:59 IST window, proceeding with report.")
+        return True
+
+    print("[INFO] Outside 06:00–06:59 IST window, skipping this run.")
+    return False
 # ---------------------------------------------------------------------
 # Utility functions – UNCHANGED
 # ---------------------------------------------------------------------
@@ -841,5 +859,10 @@ def main_auto():
     print("[INFO] All done.")
 
 if __name__ == "__main__":
-    # No Tkinter here; this is the autonomous version
+    
+# New guard so we only do real work around 06:00 IST once per day
+    if not should_run_now_ist():
+        # Exit cleanly; GitHub will try again next hour
+        sys.exit(0)
+        # No Tkinter here; this is the autonomous version
     main_auto()
