@@ -2,9 +2,9 @@ name: Daily News Report
 
 on:
   schedule:
-    # 01:00 UTC = 06:00 IST
-    - cron: "30 0 * * *"
-  workflow_dispatch:  # allow manual trigger
+    # Run every hour; Python script itself will only do real work at 06:00 IST
+    - cron: "0 * * * *"
+  workflow_dispatch:  # still allow manual trigger
 
 jobs:
   run-report:
