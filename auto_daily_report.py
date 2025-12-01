@@ -859,10 +859,6 @@ def main_auto():
     print("[INFO] All done.")
 
 if __name__ == "__main__":
-    # New guard so we only do real work around 06:00 IST once per day
-    if not should_run_now_ist():
-        # Exit cleanly; GitHub will try again next hour
-        sys.exit(0)
-
-    # No Tkinter here; this is the autonomous version
+    # GitHub Actions cron now runs this once per day at 06:00 IST,
+    # so we don't need an internal time guard here.
     main_auto()
