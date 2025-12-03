@@ -3,7 +3,7 @@ name: Daily News Report
 on:
   schedule:
     # Run once per day at 00:30 UTC = 06:00 IST
-    - cron: "30 0 * * *"
+    - cron: "30 21 * * *"
   workflow_dispatch:  # still allow manual trigger from GitHub UI
 
 jobs:
