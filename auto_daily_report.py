@@ -845,7 +845,8 @@ def main_auto():
 
     print("[INFO] ----------------------------------------------------")
     print("[INFO] Auto report generation started (no UI).")
-    print(f"[INFO] IST time: {now_ist}")
+    print(f"[INFO] UTC time: {now_utc.strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"[INFO] IST time: {now_ist.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"[INFO] Output folder: {out_folder}")
     print(f"[INFO] Output file  : {output_fullpath}")
     print("[INFO] ----------------------------------------------------")
@@ -859,6 +860,6 @@ def main_auto():
     print("[INFO] All done.")
 
 if __name__ == "__main__":
-    # GitHub Actions cron now runs this once per day at 06:00 IST,
-    # so we don't need an internal time guard here.
+    # GitHub Actions cron is adjusted so this effectively runs around 06:00 IST.
     main_auto()
+
