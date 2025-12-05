@@ -2,7 +2,7 @@ name: Daily News Report
 
 on:
   schedule:
-    # Run at 21:12 UTC daily — adjusted so that with GitHub's ~3h18m delay
+    # Run at 20:1 UTC daily — adjusted so that with GitHub's ~3h18m delay
     # the actual job runs around 00:30 UTC (07:00 IST)
     - cron: "20 1 * * *"
   
